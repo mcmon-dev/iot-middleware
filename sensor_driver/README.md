@@ -1,4 +1,4 @@
-#Sensor/Virtual Driver
+# Sensor/Virtual Driver
 
 ## Prerequisites
 - Python 2.7.6
@@ -22,7 +22,7 @@ The drivers are configured via their command line arguments. The arguments are e
 **-p:** This is the port of the IoT middleware e.g. 50000  
 **-c (Virtual Driver only):** This is the number of data sources which shall be simulated or rather launched.
 
-##Usage
+## Usage
 This is the driver for the humidity and temperature sensor: 
 ```shell
 USAGE: python hum_temp_sensor_driver.py -a <ip address with port> -r <port for own coap server> -s <server ip address> -p <port>

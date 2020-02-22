@@ -1,4 +1,4 @@
-#IoT Middleware
+# IoT Middleware
 
 ## Prerequisites
 - Java 1.8.0_131
@@ -27,7 +27,7 @@ Go to the *iotmiddleware* folder and execute:
 mvn clean package
 ```
 
-##Usage
+## Usage
 ```shell
 USAGE: java -jar [-m <value>] iot-middleware-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
