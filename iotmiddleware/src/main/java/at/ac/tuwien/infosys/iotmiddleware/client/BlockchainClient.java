@@ -1,7 +1,7 @@
 package at.ac.tuwien.infosys.iotmiddleware.client;
 
-import at.ac.tuwien.infosys.iotmiddleware.utils.Defines;
 import at.ac.tuwien.infosys.iotmiddleware.contract.IntegrityService;
+import at.ac.tuwien.infosys.iotmiddleware.utils.Defines;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.web3j.protocol.Web3j;

@@ -2,21 +2,17 @@ package at.ac.tuwien.infosys.iotclient.subscriber;
 
 import at.ac.tuwien.infosys.iotclient.model.Message;
 import at.ac.tuwien.infosys.iotclient.model.RealtimeLog;
+import at.ac.tuwien.infosys.iotclient.utils.Defines;
 import at.ac.tuwien.infosys.iotclient.utils.JsonConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import at.ac.tuwien.infosys.iotclient.utils.Defines;
 
-import java.io.IOException;
-import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
-import java.util.TimeZone;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class RealtimeChannelSubsciber {

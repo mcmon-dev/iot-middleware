@@ -8,7 +8,6 @@ import org.web3j.protocol.core.methods.response.EthBlock;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TransactionCommitChecker {
 

@@ -1,11 +1,11 @@
 package at.ac.tuwien.infosys.iotmiddleware.client;
 
+import at.ac.tuwien.infosys.iotmiddleware.model.MeasureType;
+import at.ac.tuwien.infosys.iotmiddleware.model.Measurement;
 import at.ac.tuwien.infosys.iotmiddleware.model.Message;
 import at.ac.tuwien.infosys.iotmiddleware.utils.JsonConverter;
 import at.ac.tuwien.infosys.iotmiddleware.workflow.IntegrityWorkflow;
 import at.ac.tuwien.infosys.iotmiddleware.workflow.RealtimeWorkflow;
-import at.ac.tuwien.infosys.iotmiddleware.model.MeasureType;
-import at.ac.tuwien.infosys.iotmiddleware.model.Measurement;
 import org.eclipse.californium.core.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

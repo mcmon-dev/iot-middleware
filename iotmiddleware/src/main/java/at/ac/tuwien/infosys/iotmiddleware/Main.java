@@ -1,9 +1,9 @@
 package at.ac.tuwien.infosys.iotmiddleware;
 
 import at.ac.tuwien.infosys.iotmiddleware.client.BlockchainClient;
+import at.ac.tuwien.infosys.iotmiddleware.client.MQTTClient;
 import at.ac.tuwien.infosys.iotmiddleware.server.RegistryCoAPServer;
 import at.ac.tuwien.infosys.iotmiddleware.utils.Defines;
-import at.ac.tuwien.infosys.iotmiddleware.client.MQTTClient;
 import io.ipfs.api.IPFS;
 import org.eclipse.californium.core.network.CoapEndpoint;
 import org.eclipse.paho.client.mqttv3.MqttException;

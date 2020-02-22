@@ -7,9 +7,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
-
-import java.util.concurrent.CompletableFuture;
 
 public class RealtimeWorkflow extends Workflow {
 

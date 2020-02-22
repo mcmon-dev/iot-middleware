@@ -1,8 +1,5 @@
 package at.ac.tuwien.infosys.iotclient.model;
 
-import at.ac.tuwien.infosys.iotclient.model.MeasureType;
-import at.ac.tuwien.infosys.iotclient.model.Unit;
-
 public class Message {
 
     private String id;

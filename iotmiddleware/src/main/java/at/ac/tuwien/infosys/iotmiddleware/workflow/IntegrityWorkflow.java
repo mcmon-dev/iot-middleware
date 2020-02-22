@@ -4,12 +4,10 @@ import at.ac.tuwien.infosys.iotmiddleware.client.BlockchainClient;
 import at.ac.tuwien.infosys.iotmiddleware.model.Message;
 import at.ac.tuwien.infosys.iotmiddleware.utils.Defines;
 import at.ac.tuwien.infosys.iotmiddleware.utils.JsonConverter;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import io.ipfs.api.IPFS;
 import io.ipfs.api.MerkleNode;
 import io.ipfs.api.NamedStreamable;
 import io.ipfs.multihash.Multihash;
-import jdk.nashorn.internal.ir.Block;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
@@ -56,7 +54,7 @@ public class IntegrityWorkflow extends Workflow{
                 MessageDigest dig = MessageDigest.getInstance("SHA-256");
                 hashedId = dig.digest(message.getId().getBytes(StandardCharsets.UTF_8));
             } catch (NoSuchAlgorithmException e) {
-                logger.error("Error while instantianting digester for SHA-256");
+                logger.error("Error while instantiating digester for SHA-256");
                 //This error shall not occur, hence fail hard!
                 System.exit(0);
             }

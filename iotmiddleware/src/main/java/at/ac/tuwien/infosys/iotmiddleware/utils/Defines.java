@@ -14,11 +14,11 @@ public class Defines {
     // URI of the MQTTv3 broker.
     public static final String BROKER = "tcp://localhost:1883";
     //Path to the GETH IPC file
-    public static final String GETH_IPC_PATH = "custom_path/geth.ipc";
+    public static final String GETH_IPC_PATH = "path_to/geth.ipc";
     //Smart contract address
-    public static final String CONTRACT_ADDRESS = "0x4d401bd126316c1689b332a975eea7cf29b04a6d";;
+    public static final String CONTRACT_ADDRESS = "smart_contract_address";;
     //Ropsten Client Account
-    public static final String BC_ACCOUNT = "account address of the bc client";
+    public static final String BC_ACCOUNT = "address";
     public static final BigInteger GAS_PRICE = BigInteger.valueOf(6000000000l);
     public static final String IFPS_ADDRESS = "/ip4/127.0.0.1/tcp/5001";
     //Max. inflights value of the mqtt client

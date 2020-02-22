@@ -1,8 +1,8 @@
 pragma solidity ^0.4.21;
 
-    /**
-    * Integrity service for IoT data.
-    */
+/**
+* Integrity service for IoT data.
+*/
 
 contract IntegrityService {
 
@@ -11,31 +11,35 @@ contract IntegrityService {
 
     uint balance;
     uint maxDelay;//in seconds
-    uint lastUpdate;
     uint penalty;
     uint deposit;
 
     bool registered;
+    bool penaltyPaid;
+
+    mapping(bytes32 => uint) lastUpdates;
 
     event MeasurementUpdate(
-        bytes32 indexed _hash
+        address indexed sender,
+        uint8 function_code,
+        uint8 digest_length,
+        bytes32 digest
     );
 
-    modifier onlyBy(address _account)
-    {
+    modifier onlyBy(address _account){
         require(msg.sender == _account);
         _;
     }
 
-	
-    function IntegrityService(uint _maxDelay, uint _deposit) public{
-	    institution = msg.sender;
+
+    function IntegrityService(uint _maxDelay, uint _deposit) public {
+        institution = msg.sender;
         maxDelay = _maxDelay;
-        deposit += _deposit;
+        deposit = _deposit;
     }
 
     /**
-    * Client registers and pays the required deposit.
+    * Here the client registers and pays the required deposit.
     */
     function register() public payable {
 
@@ -46,62 +50,65 @@ contract IntegrityService {
         registered = true;
     }
 
-	/**
-    * Update function to submit new values.
-    */
-    function update(bytes32 hash) onlyBy(client) public {
+    function update(uint8 function_code, uint8 digest_length, bytes32 digest, bytes32 id_hash) onlyBy(client) public {
 
-        require(registered == true);
+        require(registered == true && penaltyPaid == false);
 
-        if(block.timestamp > lastUpdate+maxDelay){
-            penalty = penalty + 1;
+        if (lastUpdates[id_hash] > 0 && block.timestamp > lastUpdates[id_hash] + maxDelay) {
+            penalty += 1;
         }
 
-        lastUpdate = block.timestamp;
-        emit MeasurementUpdate(hash);
+        lastUpdates[id_hash] = block.timestamp;
+        emit MeasurementUpdate(msg.sender, function_code, digest_length, digest);
     }
-	
-	/**
-    * Transfers the penaly to the address which is registered as institution.
-    */
+
+    function getLastUpdate(bytes32 id_hash) public returns (uint){
+
+        if (lastUpdates[id_hash] > 0 && block.timestamp > lastUpdates[id_hash] + maxDelay) {
+            penalty += 1;
+        }
+
+        return lastUpdates[id_hash];
+    }
+
     function withdraw() onlyBy(institution) public {
         require(balance >= penalty);
         msg.sender.transfer(penalty);
         balance = balance - penalty;
+        penalty = 0;
+        penaltyPaid = true;
     }
 
-	/**
-    * Transfers the remaining to balance.
-    */
     function withdrawDeposit() onlyBy(client) public {
+        require(penaltyPaid = true);
         msg.sender.transfer(balance);
         balance = 0;
-    }
-	
-	/**
-    * Resets all parameters to start the contract again. Only for testing purposes!
-    */
-    function reset() onlyBy(institution) public{
-        registered = false;
-        penalty = 0;
-        lastUpdate = 0;
     }
 
 
     //********** ONLY FOR TESTING **************//
-    function getBalance() public view returns(uint) {
+    function getBalance() public view returns (uint) {
         return balance;
     }
 
-    function getPenalty() public view returns(uint) {
+    function getPenalty() public view returns (uint) {
         return penalty;
     }
 
-    function isRegistered() public view returns(bool) {
+    function isRegistered() public view returns (bool) {
         return registered;
     }
 
-    function getLastUpdate() public view returns(uint) {
-        return lastUpdate;
+    function getDeposit() public view returns (uint) {
+        return deposit;
+    }
+
+    function getMaxDelay() public view returns (uint) {
+        return maxDelay;
+    }
+
+    function reset() onlyBy(institution) public {
+        registered = false;
+        penalty = 0;
     }
 }
