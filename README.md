@@ -16,7 +16,7 @@ general description which steps you have to take in order to get the application
 4. Set up the [sensor/virtual driver](./sensor_driver).
 
 
-##Troubleshooting
+## Troubleshooting
 **The registration of the sensor/virtual driver at the IoT middleware is not working**  
 Check your firewall settings if traffic is blocked from or to the the IoT middleware.
 
